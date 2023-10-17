@@ -6,14 +6,74 @@ import { Skeleton } from '@mui/material';
 import { green, lightGreen } from '@mui/material/colors';
 import ArrowUpwardIcon from '@mui/icons-material/ArrowUpward';
 import CircularProgress from '@mui/material/CircularProgress';
+import { BarChart } from './BarChart';
+import { DoughnutChart } from './Doughnut';
+import SideMenuBar from './SideMenu';
+import DashboardTest from './DashboardTest';
+import TextField from '@mui/material/TextField';
+import AssignmentIcon from '@mui/icons-material/Assignment';
+import Avatar from '@mui/material/Avatar';
+import { Bar } from 'react-chartjs-2';
 
 function App() {
   return (
     <div className="App">
-      <SummaryBoxList />
-      <CustomerBox />
+      <DashTest />
     </div>
   );
+}
+
+
+function DashTest() {
+  return(
+    <div className='main-container'>
+      <div className='first-container'>
+        <DashboardHome />
+      </div>
+      <div className='second-container'>
+        <SummaryBoxList />
+      </div>
+      <div className='third-container'>
+        <div className='barchart'><BarChart /></div>
+      </div>
+      <div className='fourth-container'>
+        <div className='doughnut'>
+          <DoughnutChart />
+        </div>
+        
+      </div>
+      <div className='fifth-container'>e</div>
+    </div>
+  )
+}
+
+function Dashboard() {
+  return(
+    <div className='dashboard-container'>
+      <div className='dashboard-item1'><DashboardHome /></div>
+      <div className='dashboard-item2'><SummaryBoxList /></div>
+      <div >
+        <OverviewBox className="dashboard-item3"/>
+        <CustomerBox className="dashboard-item4"/>
+      </div>
+    </div>
+  )
+}
+
+function DashboardHome() {
+  return(
+    <div>
+      <SideMenuBar />
+    </div>
+  )
+}
+
+function OverviewBox() {
+  return(
+    <div className='overview-box-container'>
+      <BarChart />
+    </div>
+  )
 }
 
 function CustomerBox() {
@@ -24,7 +84,7 @@ function CustomerBox() {
         <p className='customer-header-subtext'>Customers that buy products</p>
       </div>
       <div className='customer-chart'>
-        <CircularProgress variant="determinate" value={100} />
+        <DoughnutChart />
       </div>
     </div>
   )
@@ -32,11 +92,17 @@ function CustomerBox() {
 
 function SummaryBoxList() {
   return(
+    <div >
+      <div className='header-container'>
+        <div>Hello Tharun 👋,</div>
+        {/* <div style={{width: '200px', height: 5}}><TextField label="Search" /></div> */}
+      </div>
     <div className='summary-box-list'>
       <SummaryBox />
       <SummaryBox />
       <SummaryBox />
       <SummaryBox />
+    </div>
     </div>
   )
 }
@@ -51,14 +117,14 @@ function SummaryBox() {
   return(
     <div className='summary-box-container'>
       <div className='summary-box-icon'>
-      <FontAwesomeIcon color='green' icon={faCircle} size='2xl'/>
-      {/* <Brightness1RoundedIcon color='blue' /> */}
-      {/* <Skeleton variant="circular" width={40} height={40} /> */}
+        <Avatar sx={{ width: 70, height: 70,bgcolor: green[500] }}>
+          <AssignmentIcon />
+        </Avatar>
       </div>
       <div className='summary-box-specs'>
-        <p className='summary-box-text'>{data.text}</p>
-        <p className='summary-box-number'>{data.num}</p>
-        <p className='summary-box-percent'><ArrowUpwardIcon className='icon-size' />{data.percent}</p>
+        <text>Earning</text>
+        <text>75</text>
+        <text>⬆37.8 this month</text>
       </div>
     </div>
   )
