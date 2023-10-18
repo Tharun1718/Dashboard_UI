@@ -4,6 +4,7 @@ import { Doughnut } from 'react-chartjs-2';
 
 ChartJS.register(ArcElement, Tooltip, Legend);
 
+
 const data = {
   labels: ['Red', 'Blue', 'Purple'],
   datasets: [
@@ -21,24 +22,12 @@ const data = {
         'rgba(255, 206, 86, 1)',
       ],
       borderWidth: 1,
+      width: 30,
+      height: 30
     },
   ],
 };
 
-// export const options = {
-//     cutoutPercentage: 70,
-//     responsive: true,
-//     maintainAspectRatio: false,
-//     legend: {
-//         display: false,
-//     },
-//     elements: {
-//         center: {
-//             text: 'Red is a 2/3',
-//             color: '#36A2EB',
-//         }
-//     }
-// }
 
 const options = {
   plugins: {
@@ -49,7 +38,20 @@ const options = {
   },
 };
 
+const textCenter = {
+  id: 'textCenter',
+  beforeDatasetsDraw(chart, args, pluginOptions) {
+    const {ctx, data} = chart;
+
+    ctx.save();
+    ctx.font = "20px bold sans-serif";
+    ctx.fillStyle = 'black';
+    ctx.alignText='left';
+    ctx.fillText('65%',chart.getDatasetMeta(0).data[0].x,chart.getDatasetMeta(0).data[0].y)
+  }
+}
+
 export function DoughnutChart() {
-  return <Doughnut data={data} options={options} />;
+  return <Doughnut data={data} options={options} plugins={[textCenter]} />;
 }
 

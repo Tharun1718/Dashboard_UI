@@ -84,7 +84,11 @@ export const data = {
     {
       label: '',
       data: [60,40,95,65,75,30,77,95,90,80,75,82],
-      backgroundColor: '#eef0f8',
+      backgroundColor: [
+        '#eef0f8', '#eef0f8','#eef0f8','#eef0f8',
+        '#eef0f8','#eef0f8','#eef0f8','blue',
+        '#eef0f8','#eef0f8','#eef0f8','#eef0f8'
+    ],
       borderRadius: 8,
       borderSkipped: false
     }
